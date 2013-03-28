@@ -1,0 +1,15 @@
+
+<br/><br/>
+	<a style="padding-left: 100px;" href="$adminModule.setTarget('aima/main')">返回</a>
+<br/><br/>
+
+<div style="margin-left:100px; margin-top:50px;">
+#if($lastversion)
+	版本int值：  $lastversion <br/>
+	下载地址：   $downurl <br/>
+#else
+	当前还没有任何版本信息
+#end
+</div>	
+
+

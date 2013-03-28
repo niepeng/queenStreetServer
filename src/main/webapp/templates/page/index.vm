@@ -1,0 +1,118 @@
+<div style="width:958px;margin:0 auto;padding-top:10px" class="Group r5">
+        <div class="MobileNav">
+
+   <a href="javascript:;" title="Android版本1.0发布，新功能陆续增加" class="android c3">android</a>
+   <a href="javascript:;" title="IPHONE版本即将上线，敬请期待" class="app">app</a>
+
+</div>
+<!---andor--->
+<div class="MobileCon-andor " style="display: block;">
+<div class="MobileSlid slide_img_android ">
+  <ul id="androidshow" class="img_list_show">
+    <li><img width="178" height="303" src="$staticServer/images/androidlist1.jpg" alt=""></li>
+	<li><img width="178" height="303" src="$staticServer/images/androidlist2.jpg" alt=""></li>
+	<li><img width="178" height="303" src="$staticServer/images/androidlist3.jpg" alt=""></li>
+	<li><img width="178" height="303" src="$staticServer/images/androidlist4.jpg" alt=""></li>
+  </ul>
+</div>
+<a href="http://static.alashu.com/weekendDO2.3.apk" class="app_adress"></a>
+<p class="app_wx"><img width="80" height="80" src="$staticServer/images/qrcode.png" alt=""></p>
+</div>
+<!---app--->
+<div style="display: none;" class="MobileCon-app">
+<div class="MobileSlid ">
+  <ul id="iphoneshow" class="img_list_show">
+    <li><img width="188" height="281" src="$staticServer/images/iplist1.jpg" alt=""></li>
+	<li><img width="188" height="281" src="$staticServer/images/iplist2.jpg" alt=""></li>
+	<li><img width="188" height="281" src="$staticServer/images/iplist3.jpg" alt=""></li>
+	<li><img width="188" height="281" src="$staticServer/images/iplist4.jpg" alt=""></li>
+  </ul>
+</div>
+<a style="left:457px;top:347px" target="_blank" href="https://itunes.apple.com/cn/app/zhou-mo-gan-sha/id583852458?mt=8" class="app_adress"></a>
+<p style="left:745px;top:344px" class="app_wx"><img width="90" height="90" src="$staticServer/images/qrcode_iphone.png" alt=""></p>
+</div>
+<img class="MobilePic" alt="" src="$staticServer/images/sckzsew_960x81.jpg"> 
+
+	<div class="mc p20">
+      <!--
+	  <span class="f16">Beta 1.0版本提醒</span>
+       <p class="pit">1、实现一键关注自己经常光临的超市；</p>
+       <p class="pit">2、实现购物清单和计算总价功能；</p>
+       <p class="pit">3、方便查找周边的超市地址位置；</p>
+	  -->
+    </div>
+     <div class="clear"></div>
+   </div>
+  <script>
+
+       $(function () {
+           var cur = 1;
+           var flag = true;
+           setInterval(function () {
+               if (!flag) {
+                   $('#androidshow').animate({
+                       left: '+=178'
+                   }, 2000, function () {//css("left","0px");
+                       cur--;
+                       if (cur == 1) { flag = true; cur =1; }
+                   });
+               } else {
+                   $('#androidshow').animate({
+                       left: '-=178'
+                   }, 2000, function () {
+                       // Animation complete.
+                       cur++;
+
+                       if (cur == 4) { flag = false; cur = 4; }
+                   });
+               }
+
+           }, 4000);
+
+
+
+
+           var curip = 1;
+           var flagip = true;
+           setInterval(function () {
+               if (!flagip) {
+                   $('#iphoneshow').animate({
+                       left: '+=188'
+                   }, 2000, function () {//css("left","0px");
+                       curip--;
+                       if (curip == 1) { flagip = true; curip = 1; }
+                   });
+               } else {
+                   $('#iphoneshow').animate({
+                       left: '-=188'
+                   }, 2000, function () {
+                       // Animation complete.
+                       curip++;
+
+                       if (curip == 4) { flagip = false; curip = 4; }
+                   });
+               }
+
+           }, 4000);
+           $(".android").click(function () {
+               $(this).addClass("c3");
+               $(".app").removeClass("c2");
+               $(".MobileCon-andor").show();
+               $(".MobileCon-app").hide();
+           });
+
+           $(".app").click(function () {
+               $(this).addClass("c2");
+               $(".android").removeClass("c3");
+               $(".MobileCon-andor").hide();
+               $(".MobileCon-app").show();
+           });
+       });
+   </script>
+   
+   <div class="wrap_foot mt20">
+  <div id="webfoot">杭州三匠软件有限公司 版权所有 浙ICP备11006974号-6  <br/>
+Copyright@2011-2012 kuailezm.com Right Reserved kuailezm (at) baibutao.com</div>
+
+</div>
+   

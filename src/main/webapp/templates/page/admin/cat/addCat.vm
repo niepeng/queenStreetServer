@@ -1,0 +1,30 @@
+
+
+#set($form = $formFactory.getForm('cat.add'))
+
+<div style="margin:auto;">
+	<form method="post" enctype="multipart/form-data" action="doAddCat.htm">
+    	
+    	<div>
+    		#set($name = $!form.name.value)
+    		$form.name.label: <input type="text" name="$form.name.name" size="20" value="$!name" />
+    		$!form.name.message
+		</div>
+		
+		<div>
+    		图片: <input type="file" name="imageUrl" size="50" />
+		</div>
+		
+		<div>
+    		#set($sortValue = $!form.sortValue.value)
+    		$form.sortValue.label(越大越靠前): <input type="text" name="$form.sortValue.name" size="20" value="$!sortValue" />
+    		$!form.sortValue.message
+		</div>
+		
+		
+		<input type="submit" value="添加" />
+		<a href="$adminModule.setTarget('cat/catList')">返回</a>
+		
+    </form>
+	
+</div>	

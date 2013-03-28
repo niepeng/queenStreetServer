@@ -1,0 +1,240 @@
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<br/>
+------------------------------------------------------编辑活动--------------------------------------------------------------------------------------------------------------
+<br/>
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<br/><br/><br/> 
+#set($form = $formFactory.getForm('item.edit'))
+
+<div style="margin:auto; padding-left:100px;">
+	<form id="editItemForm" method="post" action="/admin/doEditItem.htm" enctype="multipart/form-data">
+	
+	#set($id = $!form.id.value)
+	#if(!$id)
+		#set($id = $itemDO.id)
+	#end	
+	<input type="hidden" name="$form.id.name" value="$id" /> 
+	<input type="hidden" name="referStatus" value="$!referStatus" /> 
+	
+	#set($status = $!form.status.value)
+	#if(!$status)
+		#set($status = $itemDO.status)
+	#end	
+	<input type="hidden" name="$form.status.name" value="$status" /> 
+	<input type="hidden" name="newStatus" id="newStatus" value="" /> 
+	
+	
+	<div>
+		#set($name = $!form.name.value)
+		#if(!$name)
+			#set($name = $itemDO.name)
+		#end	
+		$form.name.label: <input type="text" name="$form.name.name" size="100" value="$!name" />
+		$!form.name.message
+	</div>
+	
+	
+	<div>
+		#set($cityId = $!form.cityId.value)
+		#if(!$cityId)
+			#set($cityId = $itemDO.cityId)
+		#end	
+		$form.cityId.label: 
+		<select name="$form.cityId.name">
+			 #foreach($cityEnum in $applicationUtil.getCitys()) 
+    			 <option value="$cityEnum.getValue()" #if($cityEnum.getValue() == $cityId)  selected #end >$cityEnum.getName()</option>
+    		#end	
+        </select>
+		$!form.cityId.message
+	</div>
+	
+	<div>
+		#set($cooperation = $!form.cooperation.value)
+		#if(!$cooperation)
+			#set($cooperation = $itemDO.cooperation)
+		#end
+		$form.cooperation.label: 
+		<select name="$form.cooperation.name">
+			#foreach($cooperationEnum in $applicationUtil.getCooperation()) 
+    			 <option value="$cooperationEnum.getMeaning()" #if($cooperationEnum.getMeaning() == $cooperation)  selected #end >$cooperationEnum.getMeaning()</option>
+    		#end	
+        </select>
+		$!form.cooperation.message
+	</div>
+	
+	
+	<div>
+		主图: <input type="file" name="imageUrl" size="50" />
+		<img src="$itemDO.image" width="100" height="80" />
+	</div>
+	
+	<div>
+		活动照片: <br/>
+		#set($photoLength = 0)
+		#foreach($pic in $itemDO.getPhotoArray())
+			#set($name = "activityImageUrl" + $velocityCount )
+			#set($photoLength = $velocityCount)
+			<input type="file" name="$name" size="50" /> <img src="$pic" width="100" height="80" /><br/>
+		#end	
+		#set($photoLength = $photoLength + 1)
+		#foreach($tmp in [$photoLength .. 10])
+			#set($name = "activityImageUrl" + $tmp )
+			<input type="file" name="$name" size="50" /><br/>
+		#end
+	</div>
+	
+	
+	<div>
+		#set($catId = $!form.catId.value)
+		#if(!$catId)
+			#set($catId = $itemDO.catId)
+		#end	
+		$form.catId.label: 
+		<select name="$form.catId.name">
+			 #foreach($catDO in $catList) 
+    			 <option value="$catDO.id" #if($catDO.id == $catId)  selected #end >$catDO.name</option>
+    		#end	
+        </select>
+		$!form.catId.message
+	</div>
+	
+	<div>
+		#set($reason = $!form.reason.value)
+		#if(!$reason)
+			#set($reason = $itemDO.reason)
+		#end	
+		$form.reason.label: 
+        <TextArea name="$form.reason.name" cols="100" rows="3">$!reason</TextArea>
+		$!form.reason.message
+	</div>
+	
+	<div>
+		#set($interest = $!form.interest.value)
+		#if(!$interest)
+			#set($interest = $itemDO.interest)
+		#end	
+		$form.interest.label: <input type="text" name="$form.interest.name" size="10" value="$!interest" />
+		$!form.interest.message
+	</div>
+	
+	<div>
+		#set($joinIn = $!form.joinIn.value)
+		#if(!$joinIn)
+			#set($joinIn = $itemDO.joinIn)
+		#end	
+		$form.joinIn.label: <input type="text" name="$form.joinIn.name" size="10" value="$!joinIn" />
+		$!form.joinIn.message
+	</div>
+	
+	<div>
+		#set($oldPrice = $!form.oldPrice.value)
+		#if(!$oldPrice)
+			#set($oldPrice = $itemDO.oldPrice)
+		#end	
+		$form.oldPrice.label: <input type="text" name="$form.oldPrice.name" size="10" value="$!oldPrice" />
+		$!form.oldPrice.message
+	</div>
+	
+	
+	<div>
+		#set($newPrice = $!form.newPrice.value)
+		#if(!$newPrice)
+			#set($newPrice = $itemDO.newPrice)
+		#end	
+		$form.newPrice.label: <input type="text" name="$form.newPrice.name" size="10" value="$!newPrice" />
+		$!form.newPrice.message
+	</div>
+	
+	<div>
+		#set($address = $!form.address.value)
+		#if(!$address)
+			#set($address = $itemDO.address)
+		#end	
+		$form.address.label: <input type="text" name="$form.address.name" size="100" value="$!address" />
+		$!form.address.message
+	</div>
+	
+	<div>
+		#if($itemDO.longitude >0 && $itemDO.latitude > 0)
+			#set($lngAndLat= $applicationUtil.lngAndLatChange($itemDO.longitude) + "," + $applicationUtil.lngAndLatChange($itemDO.latitude))
+		<img src="http://api.map.baidu.com/staticimage?width=400&height=300&center=${lngAndLat}&markers=${lngAndLat}&zoom=11" />
+		#end	
+		
+	</div>	
+	
+	<div>
+		#set($startTime = $!form.startTime.value)
+		#if(!$startTime)
+			#set($startTime = $itemDO.startTime)
+		#end	
+		$form.startTime.label: <input type="text" name="$form.startTime.name" size="30" value="$dateUtil.formatNoException($startTime)" /> 如：(2012-10-20 23:30:00)
+		$!form.startTime.message
+	</div>
+	
+	<div>
+		#set($endTime = $!form.endTime.value)
+		#if(!$endTime)
+			#set($endTime = $itemDO.endTime)
+		#end	
+		$form.endTime.label: <input type="text" name="$form.endTime.name" size="30" value="$dateUtil.formatNoException($endTime)" /> 如：(2012-10-20 23:30:00)
+		$!form.endTime.message
+	</div>
+	
+	<div>
+		#set($content = $!form.content.value)
+		#if(!$content)
+			#set($content = $itemDO.content)
+		#end	
+		$form.content.label: (☼)
+        <TextArea name="$form.content.name" cols="100" rows="15">$!content</TextArea>
+		$!form.content.message
+	</div>
+	
+	<div>
+		#set($onLineTime = $!form.onLineTime.value)
+		#if(!$onLineTime)
+			#set($onLineTime = $itemDO.onLineTime)
+		#end	
+		$form.onLineTime.label: 
+        <input type="text" name="$form.onLineTime.name" size="30" value="$dateUtil.formatNoException($onLineTime)" />如：(2012-10-20 23:30:00)
+		$!form.onLineTime.message
+	</div>
+	
+	<div>
+		#set($control = $!form.control.value)
+		#if(!$control)
+			#set($control = $itemDO.control)
+		#end
+		$form.control.label: 
+        <select name="$form.control.name">
+    		 <option value="0" #if($control == 0)  selected #end >能处理</option>
+    		 <option value="1" #if($control == 1)  selected #end >不能处理</option>
+        </select>
+		$!form.control.message
+	</div>
+	
+	
+	<div>
+		#errorMessage($!resultmessage.message)
+	</div>	
+	
+	<br/><br/>
+	<input type="button" onclick="editItemSubmit(4)"  value="展现中" /> 
+	<input type="button" onclick="editItemSubmit(2)" value="审核通过" /> 
+	<input type="button" onclick="editItemSubmit(10)" value="审核不通过" />
+	<a href="$adminModule.setTarget('itemList').param('status', 1)">返回</a>
+</form>
+
+</div>
+
+<script language="javascript">
+	function editItemSubmit(type) {
+	    var newStatus = document.getElementById("newStatus");
+		newStatus.value = type;
+		document.getElementById("editItemForm").submit();
+	}
+</script>
+
+

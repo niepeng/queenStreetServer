@@ -1,0 +1,65 @@
+DROP DATABASE IF EXISTS `qs_db`;
+CREATE DATABASE `qs_db`;
+use `qs_db`;
+
+
+delete from mysql.user where User = 'hui_user';
+grant select,update,delete,insert on `hui_db`.* to 'hui_user'@'%' identified by 'hui_user';
+flush privileges;
+
+
+
+DROP TABLE IF EXISTS `qs_cat`;
+
+CREATE TABLE `qs_cat` (
+`id` bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`gmt_modified` datetime  not null ,
+`gmt_create` datetime  not null,
+`name` varchar(100)  not null ,
+`sort_value` int  not null default 0 ,
+`pic` varchar(512)   null ,
+`info` varchar(512)   null ,
+`deleted` tinyint  not null  default 0 
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `qs_item`;
+
+CREATE TABLE `qs_item` (
+`id` bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`gmt_modified` datetime  not null,
+`pic_url` varchar(512)   null ,
+`gmt_create` datetime  not null,
+`commission_num` int  not null default 0,
+`commission_rate` varchar(100)   null ,
+`price` int  not null default 0 ,
+`seller_nick` varchar(100)  null ,
+`volume` bigint  not null default 0 ,
+`cat_id` bigint  not null default 0 ,
+`web_click_url` varchar(1024)   null ,
+`commission` varchar(100)   null ,
+`show_title` varchar(512)   null ,
+`mobile_url` varchar(1024)   null ,
+`seller_credit_score` int  not null default 0,
+`tao_item_id` bigint  not null default 0 ,
+`deleted` tinyint  not null  default 0 
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+
+
+DROP TABLE IF EXISTS `qs_key_value`;
+
+CREATE TABLE `qs_key_value` (
+`id` bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`gmt_modified` datetime  not null ,
+`key_name` varchar(512)  not null,
+`gmt_create` datetime  not null ,
+`value` varchar(1024)  not null ,
+`type` int  not null default 0 ,
+`deleted` tinyint  not null  default 0 
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+
+

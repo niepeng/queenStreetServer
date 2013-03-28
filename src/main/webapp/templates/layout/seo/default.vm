@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>
+		seo info
+		</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link href="$cssServer/cssreset.css" type="text/css" rel="stylesheet" />
+		<link href="$cssServer/pagination.css?ts=20012-09-06" type="text/css" rel="stylesheet" />
+	
+	</head>
+	<body>
+		$page_content
+		
+		<style>
+		.error-tip {
+			font-size: 20px;
+			color: #f00;
+			font-weight: bold;
+		}
+		
+		.pp-list {
+        background-color: #C9C9C9;
+        border: 1px solid #CDCDCD;
+        border-spacing: 1px;
+        margin: 0;
+		margin-left:50px;
+        overflow: hidden;
+    }
+	
+        body {
+            line-height: 1.5;
+        }
+		
+		caption {
+            -moz-border-bottom-colors: none;
+            -moz-border-left-colors: none;
+            -moz-border-right-colors: none;
+            -moz-border-top-colors: none;
+            background: url("http://9490.s30.javaidc.com/style/images/page-bg.gif") repeat-x scroll 0 0 #FFFFFF;
+            border-color: #CDCDCD;
+            border-image: none;
+            border-style: solid solid none;
+            border-width: 1px;
+            font-weight: bold;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 5px;
+        }
+		
+		td {
+      border: 1px black solid;
+    }
+
+
+		</style>
+	</body>
+</html>

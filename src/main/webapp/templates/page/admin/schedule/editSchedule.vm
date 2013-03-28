@@ -1,0 +1,89 @@
+
+
+编辑日程
+<br/><br/><br/>
+<div style="padding-left:100px;">
+    
+    #set($form = $formFactory.getForm('schedule.edit'))
+    
+    <div style="margin:auto;paddding-left:100px;">
+    	<form method="post" action="doEditSchedule.htm">
+
+			#set($meetingId = $!form.meetingId.value)
+        	#if(!$meetingId)
+        		#set($meetingId = $scheduleDO.meetingId)
+        	#end	
+        	<input type="hidden" name="$form.meetingId.name" value="$!meetingId" /> 
+    		$!form.meetingId.message
+    		
+    		#set($boardId = $!form.boardId.value)
+        	#if(!$boardId)
+        		#set($boardId = $scheduleDO.boardId)
+        	#end	
+        	<input type="hidden" name="$form.boardId.name" value="$!boardId" /> 
+    		$!form.boardId.message
+    		
+			
+			#set($id = $!form.id.value)
+        	#if(!$id)
+        		#set($id = $scheduleDO.id)
+        	#end	
+        	<input type="hidden" name="$form.id.name" value="$!id" /> 
+			$!form.id.message
+        	
+        	<div>
+        		#set($name = $!form.name.value)
+            	#if(!$name)
+            		#set($name = $scheduleDO.name)
+            	#end	
+        		$form.name.label: <input type="text" name="$form.name.name" size="20" value="$!name" />
+        		$!form.name.message
+    		</div>
+    		
+    		<div>
+        		#set($location = $!form.location.value)
+				#if(!$location)
+            		#set($location = $scheduleDO.location)
+            	#end	
+        		$form.location.label: <input type="text" name="$form.location.name" size="20" value="$!location" />
+        		$!form.location.message
+    		</div>
+    		
+    		
+    		<div>
+        		#set($startTime = $!form.startTime.value)
+				#if(!$startTime)
+            		#set($startTime = $dateUtil.format($scheduleDO.startTime))
+				#end
+				
+    			#set($endTime = $!form.endTime.value)
+				#if(!$endTime)
+            		#set($endTime = $dateUtil.format($scheduleDO.endTime))
+            	#end
+        		时间：<input type="text" name="$form.startTime.name" size="20" value="$!startTime" /> ~ <input type="text" name="$form.endTime.name" size="20" value="$!endTime" />
+        		$!form.startTime.message
+    			$!form.endTime.message
+    		</div>
+    		<br/><br/>
+    		
+    		
+﻿			<div>
+    			#foreach($meetingTeacherDO in $meetingTeacherList)
+    					#if($velocityCount % 5 == 0)
+    						<br/><br/>
+    					#end	
+        				<input type="checkbox" name="teacherStrIds" value ="$meetingTeacherDO.id" #if($meetingTeacherDO.ischoice)  checked  #end >$meetingTeacherDO.name  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    			#end	
+    		</div>
+    		
+    		<br/><br/>
+    		<input type="submit" value="修改" />
+    		<a href="$adminModule.setTarget('schedule/scheduleList').param('boardId', $scheduleDO.boardId)">返回</a>
+    		
+        </form>
+    	
+    </div>	
+    
+
+</div>	
+

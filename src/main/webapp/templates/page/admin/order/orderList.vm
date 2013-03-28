@@ -1,0 +1,81 @@
+ <br/><br/><br/>
+
+ 
+ <div style="padding-left:100px;">
+	<form action="" method="get">
+		#if($query.status == 0)
+			<i style="background:#ffcc00;">全部</i>
+		#else
+			<a href="$adminModule.setTarget('order/orderList')">全部</a>
+		#end	
+         #foreach($orderStatus in $applicationUtil.getOrderStatus())
+        		#if($query.status == $orderStatus.getValue())
+        			<i style="background:#ffcc00;">$orderStatus.getMeaning()</i>
+        		#else
+        			<a href="$adminModule.setTarget('order/orderList').param('status', $orderStatus.getValue())">$orderStatus.getMeaning()</a>
+        		#end	
+		 #end
+    </form>
+ </div> 
+<!--
+<div style="padding-left:100px;">
+	<form action="" method="get">
+			    城市筛选：<select name="cityId">
+		       <option value="0">全部</option>
+			    					 <option value="1">杭州</option>
+									 <option value="2">上海</option>
+									 <option value="3">北京</option>
+									 <option value="4">天津</option>
+									 <option value="5">广州</option>
+									 <option value="6">深圳</option>
+						   </select> 
+	 类目筛选：<select name="catId">
+		       <option value="0">全部</option>
+			    					 <option value="21">运动123</option>
+									 <option value="12">旅行</option>
+									 <option value="13">吃啥</option>
+									 <option value="14">玩啥</option>
+									 <option value="20">运动</option>
+						   </select> 
+		活动开始时间(2012-09-01)： <input type="text" value="" name="startTime1"> ~ <input type="text" value="" name="startTime2"> 
+				   <input type="hidden" value="1" name="status">
+				   <input type="submit" value="确定">
+	</form>
+	
+</div>	
+ -->
+
+<br><br>
+		
+		
+		<ul style="width:80%;padding-left: 100px;">
+			#foreach($joinDO in $list)
+				<li #if($velocityCount %2 == 0) style="background-color:#ffffff;" #else style="background-color:#f1f1f1;" #end>
+                <div style="padding:6px 0 6px 6px;">
+                <!--
+				<div style="float:right;">
+                    <br><span><a style="padding-right:20px;" href="http://127.0.0.1:8080/admin/item-pre-edit.htm?id=1032&amp;refer-status=1">编辑</a></span>
+													<span><a onclick="return confirm('设置成精选？')" style="padding-right:20px;" href="http://127.0.0.1:8080/admin/item-sift.htm?id=1032&amp;type=1">设置成精选</a></span>
+												<br><br>
+                    <span><a onclick="return confirm('确定不通过？')" href="http://127.0.0.1:8080/admin/item-delete.htm?id=1032">不通过</a></span><br>
+                </div>
+				-->
+				<div style="float:right;">
+                    <span><a onclick="return confirm('确定要设置成待支付？')" href="$adminModule.setTarget('order/orderStatus').param('id', $joinDO.id).param('status',2)">设置成待支付</a></span><br>
+					<span><a onclick="return confirm('确定设置成功？')" href="$adminModule.setTarget('order/orderStatus').param('id', $joinDO.id).param('status',4)">设置成功</a></span><br>
+					<span><a onclick="return confirm('确定要关闭吗？')" href="$adminModule.setTarget('order/orderStatus').param('id', $joinDO.id).param('status',3)">关闭</a></span><br>
+                </div>
+                <table>
+                <tbody><tr><td><img src="$joinDO.image" width="100" height="80" /></td>
+                <td style="padding-left:20px;color:#000080">
+                <a target="_blank" href="#">$joinDO.itemTitle</a>&nbsp;&nbsp;&nbsp; 姓名：	$joinDO.name	,	号码：$joinDO.phone
+                <div style="margin-top:10px;font-size:.8em;color:#333;">
+                <span style="font-weight:bold">时间：</span>$dateUtil.format($joinDO.startTime) - $dateUtil.format($joinDO.endTime)   <br>
+                <span style="font-weight:bold">地点：</span>$joinDO.address，，，， 参加时间：$dateUtil.format($joinDO.joinTime) <br>
+				<span style="font-weight:bold">订单状态：</span> $applicationUtil.getOrderStatus($joinDO.status).getMeaning()   <br>
+				</div></td></tr></tbody></table></div>
+        	#end
+		    </ul>
+			
+
+

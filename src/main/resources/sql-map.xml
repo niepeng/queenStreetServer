@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN" "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+
+    <settings
+        cacheModelsEnabled="false"
+        enhancementEnabled="false"
+        lazyLoadingEnabled="false"
+        maxRequests="300"
+        maxSessions="300"
+        maxTransactions="300"
+        useStatementNamespaces="true" />
+    
+    <sqlMap resource="sqlmaps/sqlmap-cat.xml" />
+     <sqlMap resource="sqlmaps/sqlmap-item.xml" />
+      <sqlMap resource="sqlmaps/sqlmap-key-value.xml" />
+    
+
+    <!-- <sqlMap resource="sqlmaps/sqlmap-feedback.xml" />
+   
+   
+    <sqlMap resource="sqlmaps/sqlmap-user.xml" />
+    <sqlMap resource="sqlmaps/sqlmap-collection-info.xml" />
+    <sqlMap resource="sqlmaps/sqlmap-join.xml" /> -->
+    
+    <!--  <sqlMap resource="sqlmaps/sqlmap-meeting.xml" />
+     <sqlMap resource="sqlmaps/sqlmap-board.xml" />
+	 <sqlMap resource="sqlmaps/sqlmap-meeting-teacher.xml" />
+	 <sqlMap resource="sqlmaps/sqlmap-schedule.xml" />
+	 <sqlMap resource="sqlmaps/sqlmap-teacher.xml" /> -->
+
+</sqlMapConfig>

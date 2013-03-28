@@ -1,0 +1,9 @@
+
+<br/><br/><br/><br/>
+<center>
+<ul>
+	<li><a href="$adminModule.setTarget('aima/feedList')">反馈列表</a></li>  <br/><br/><br/>
+	<li><a href="$adminModule.setTarget('aima/version')">查看版本</a></li>  <br/><br/><br/>
+	<li><a href="$adminModule.setTarget('aima/viewAddVersion')">发布新版本</a></li>  <br/><br/><br/>
+</ul>	
+</center>

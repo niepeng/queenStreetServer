@@ -1,0 +1,25 @@
+
+
+#set($form = $formFactory.getForm('board'))
+
+<div style="margin:auto;">
+	<form method="post" action="doAddBoard.htm">
+    	#set($meetingId = $!form.meetingId.value)
+    	#if(!$meetingId)
+    		#set($meetingId = $meetingDO.id)
+    	#end	
+    	<input type="hidden" name="$form.meetingId.name" value="$meetingId" /> 
+		$!form.meetingId.message
+    	
+    	<div>
+    		#set($name = $!form.name.value)
+    		$form.name.label: <input type="text" name="$form.name.name" size="20" value="$!name" />
+    		$!form.name.message
+		</div>
+		
+		<input type="submit" value="修改" />
+		<a href="$adminModule.setTarget('meetingPreEdit').param('id',$meetingDO.id )">返回</a>
+		
+    </form>
+	
+</div>	

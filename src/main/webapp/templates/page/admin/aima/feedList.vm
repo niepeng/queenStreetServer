@@ -1,0 +1,32 @@
+
+<br/><br/>
+	<a style="padding-left: 100px;" href="$adminModule.setTarget('aima/main')">返回</a>
+<br/><br/>
+<ul style="width:80%;padding-left: 100px;">
+		#foreach($item in $list)
+			<li #if($velocityCount %2 != 0 ) style="background-color:#f1f1f1;" #else style="background-color:#ffffff;" #end>
+                <div style="padding:6px 0 6px 6px;">
+                <div style="float:right;">
+					<span><a href="$adminModule.setTarget('aima/feedDelete').param('id', $item.id)" onclick="return confirm('确定删除？');">删除</a></span><br>
+                </div>
+                <table>
+                <tbody><tr><td></td>
+                <td style="padding-left:20px;color:#000080">
+					$item.phone
+                <div style="margin-top:10px;font-size:.8em;color:#333;">
+                <span style="font-weight:bold">简介：</span>$item.content <br>
+				</div></td></tr></tbody></table></div>
+        	</li>
+		#end
+</ul>
+
+	<br />
+	<div class="celar-fixed"></div>
+	<div style="float:right;padding-right:20%;">	
+		#if($feedbackQuery)
+			$widget.setTemplate("pagination").addToContext('query', $feedbackQuery).addToContext('pageFacerName', 'feedbackListPageFacer')
+		#end	
+	</div>
+	<div style="padding-top:200px;"></div>
+	
+		

@@ -1,0 +1,42 @@
+
+
+#set($form = $formFactory.getForm('cat.edit'))
+
+<div style="margin:auto;padding-left:100px;padding-top:30px;">
+	<form method="post" action="doEditCat.htm" enctype="multipart/form-data">
+    	#set($id = $!form.id.value)
+    	#if(!$id)
+    		#set($id = $catDO.id)
+    	#end	
+    	<input type="hidden" name="$form.id.name" value="$id" /> 
+		$!form.id.message
+		
+    	<div>
+    		#set($name = $!form.name.value)
+			#if(!$name)
+        		#set($name = $catDO.name)
+        	#end
+    		$form.name.label: <input type="text" name="$form.name.name" size="20" value="$!name" />
+    		$!form.name.message
+		</div>
+		
+		<div>
+    		图片: <input type="file" name="imageUrl" size="50" />
+		</div>
+		
+		<div>
+    		#set($sortValue = $!form.sortValue.value)
+			#if(!$sortValue)
+        		#set($sortValue = $catDO.sortValue)
+        	#end
+    		$form.sortValue.label: <input type="text" name="$form.sortValue.name" size="20" value="$!sortValue" />
+    		$!form.sortValue.message
+		</div>
+		
+		
+		<input type="submit" value="修改" />
+		<a href="$adminModule.setTarget('cat/catList')">返回</a>
+		
+    </form>
+	
+</div>	

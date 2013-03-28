@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>
+		快乐周末
+		</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link href="$cssServer/cssreset.css" type="text/css" rel="stylesheet" />
+		<link href="$cssServer/pagination.css?ts=20012-09-06" type="text/css" rel="stylesheet" />
+	
+	</head>
+	<body>
+		$page_content
+		
+		<style>
+		.error-tip {
+			font-size: 20px;
+			color: #f00;
+			font-weight: bold;
+		}
+		</style>
+	</body>
+</html>

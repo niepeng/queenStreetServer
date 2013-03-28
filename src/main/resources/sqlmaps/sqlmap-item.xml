@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="ItemDAO">
+
+	<typeAlias type="com.baibutao.hui.biz.dal.dataobject.ItemDO" alias="item" />
+	<typeAlias type="com.baibutao.hui.biz.query.ItemQuery" alias="itemQuery" />
+
+	<resultMap id="itemMapping" class="item">
+				<result property="gmtModified" column="gmt_modified"/>
+				<result property="picUrl" column="pic_url"/>
+				<result property="gmtCreate" column="gmt_create"/>
+				<result property="commissionNum" column="commission_num"/>
+				<result property="id" column="id"/>
+				<result property="commissionRate" column="commission_rate"/>
+				<result property="price" column="price"/>
+				<result property="sellerNick" column="seller_nick"/>
+				<result property="volume" column="volume"/>
+				<result property="catId" column="cat_id"/>
+				<result property="webClickUrl" column="web_click_url"/>
+				<result property="commission" column="commission"/>
+				<result property="showTitle" column="show_title"/>
+				<result property="mobileUrl" column="mobile_url"/>
+				<result property="sellerCreditScore" column="seller_credit_score"/>
+				<result property="taoItemId" column="tao_item_id"/>
+			</resultMap>
+	
+	<sql id="item-full-columns">
+		t.gmt_modified, t.pic_url, t.gmt_create, t.commission_num, t.id, t.commission_rate, t.price, t.seller_nick, t.volume, t.cat_id, t.web_click_url, t.commission, t.show_title, t.mobile_url, t.seller_credit_score, t.tao_item_id
+	</sql>
+	
+	<insert id="create" parameterClass="item">
+		<![CDATA[
+			insert into qs_item(gmt_modified, pic_url, gmt_create, commission_num, commission_rate, price, seller_nick, volume, cat_id, web_click_url, commission, show_title, mobile_url, seller_credit_score, tao_item_id) 
+values (now(), #picUrl#, now(), #commissionNum#, #commissionRate#, #price#, #sellerNick#, #volume#, #catId#, #webClickUrl#, #commission#, #showTitle#, #mobileUrl#, #sellerCreditScore#, #taoItemId#)
+		]]>
+		<selectKey resultClass="long" keyProperty="id">
+			SELECT	LAST_INSERT_ID();
+	   	</selectKey>
+	</insert>
+	
+	<select id="queryById" resultMap="itemMapping" parameterClass="long">
+		select
+			<include refid="item-full-columns" />
+		from
+			qs_item t
+		where
+			t.id = #value#  and t.deleted = 0 
+	</select>
+	
+	
+	<select id="queryByQueryCount" resultClass="int" parameterClass="itemQuery">
+		select
+			count(id) 
+		from
+			qs_item t
+		where
+			t.deleted = 0 
+		<isNotEqual property="catId" compareValue="0" prepend="and">
+			t.cat_id = #catId# 
+		</isNotEqual>
+	</select>
+	
+	<select id="queryByQuery" resultMap="itemMapping" parameterClass="itemQuery">
+		select
+			<include refid="item-full-columns" />
+		from
+			qs_item t 
+		where
+			t.deleted = 0 
+		<isNotEqual property="catId" compareValue="0" prepend="and">
+				t.cat_id = #catId# 
+		</isNotEqual>
+		order by 
+			t.gmt_modified desc 
+		limit
+			#startRow#, #pageSize# 
+	</select>
+	
+	
+	
+	
+	<update id="delete" parameterClass="long">
+			update qs_item t set t.deleted = 1  , t.gmt_modified = now()  where t.id = #value#
+		</update>
+	
+	<update id="update" parameterClass="item">
+		<![CDATA[
+			update 
+				qs_item 
+			set 
+				gmt_modified= now(),
+				pic_url= #picUrl#,
+				commission_num= #commissionNum#,
+				commission_rate= #commissionRate#,
+				price= #price#,
+				seller_nick= #sellerNick#,
+				volume= #volume#,
+				cat_id= #catId#,
+				web_click_url= #webClickUrl#,
+				commission= #commission#,
+				show_title= #showTitle#,
+				mobile_url= #mobileUrl#,
+				seller_credit_score= #sellerCreditScore#,
+				tao_item_id= #taoItemId#
+				where 
+					id=#id#
+			]]>
+	</update>
+	
+</sqlMap>

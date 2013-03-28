@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="gbk"?>
+<!DOCTYPE beans PUBLIC
+    "-//SPRING//DTD BEAN//EN"
+     "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	
+	<!-- 
+		！！！数据量少和访问量的时候可以这么做，当数据量和访问量大的时候需要使用独立的缓存服务器！！！
+	 -->
+	<bean name="huiCache" class="com.baibutao.hui.common.cache.impl.SimpleRamCache">
+		<property name="namespaces" value="1"></property>
+		<property name="enable" value="true"></property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,5 @@
+#if($joinDO)
+	{"code":0, "data":$jsonUtil.fields('id,status,joinTime',$joinDO)}
+#else
+	{"code":0, "data":{"msg":"no reuslt"} }
+#end	

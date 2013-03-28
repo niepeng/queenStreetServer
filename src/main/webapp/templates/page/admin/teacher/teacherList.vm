@@ -1,0 +1,31 @@
+<br/><br/>
+<div style="padding-left:100px;">
+	嘉宾列表   <a href="$adminModule.setTarget('teacher/addTeacher')">添加</a>
+<a href="$adminModule.setTarget('meetingList')" style="padding-left:80px;">返回会议列表</a>
+</div>
+<br/><br/><br/>
+
+<div style="padding-left: 100px;">
+#foreach($teacherDO in $teacherList)
+	<i style="padding-left:30px;padding-right:10px;">$teacherDO.name</i>
+	<a href="$adminModule.setTarget('teacher/editTeacher').param('id', $teacherDO.id)">edit</a> 
+	<a href="$adminModule.setTarget('teacher/teacherDelete').param('id', $teacherDO.id)" onclick="return confirm('确定要删除？')">delete</a>
+	#if($velocityCount % 4 == 0)
+		<br/>
+	#end
+#end	
+</div>
+	
+<div>
+	#errorMessage($!resultmessage.message)
+</div>	
+
+	<br />
+	<div class="celar-fixed"></div>
+	<div style="float:right;padding-right:20%;">	
+		#if($teacherQuery)
+			$widget.setTemplate("pagination").addToContext('query', $teacherQuery).addToContext('pageFacerName', 'teacherListPageFacer').render()
+		#end	
+		
+	</div>
+	<div style="padding-top:200px;"></div>

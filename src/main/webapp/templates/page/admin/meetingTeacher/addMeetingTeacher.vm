@@ -1,0 +1,28 @@
+
+
+<div style="padding-left:100px;">
+    添加会议嘉宾<br/>
+    <div style="margin:auto;padding-left:30px;">
+    	<form method="post" action="doAddMeetingTeacher.htm">
+        	
+        	<input type="hidden" name="meetingId" value="$meetingDO.id" /> 
+        	
+        	<div>
+        		#foreach($teacher in $teacherList)
+					#if($velocityCount % 5 == 0)
+						<br/><br/>
+					#end	
+    				<input type="checkbox" name="ids" value ="$teacher.id">$teacher.name   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						
+    			#end	
+    		</div>
+    		<br/><br/><br/>
+    		<input type="submit" value="添加" />
+    		<a href="$adminModule.setTarget('meetingPreEdit').param('id',$meetingDO.id )">返回</a>
+    		
+        </form>
+    	
+    </div>	
+
+</div>
+	

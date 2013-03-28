@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE beans PUBLIC
+    "-//SPRING//DTD BEAN//EN"
+     "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+    
+      <bean id="jsonAO" class="com.baibutao.hui.biz.ao.impl.JsonAOImpl">
+      </bean>
+      
+     <!-- 
+     <bean id="jsonAO" class="com.baibutao.hui.biz.ao.impl.JsonAOImpl">
+         <property name="needSign" value="${hui.use.sign}"></property>
+          <property name="signKey" value="${hui.sign.key}"></property>
+     </bean> -->
+     
+   
+     
+
+</beans>

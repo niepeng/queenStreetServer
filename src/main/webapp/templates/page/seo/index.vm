@@ -1,0 +1,96 @@
+
+
+<form method="get" action="">
+<div style="margin-top:50px;">
+		<table class="pp-list" style="margin:auto; background:white;border 0.5px solid #BBBBBB; border-spacing:1px;">
+			<tbody>
+    			<tr>
+    				<!--
+					<td>淘宝商家：<input type="text" value="" name="name" id="shopName"><input type="checkbox" style="width: 20px;" title="只列自己的商品" id="onlyMine">只列出自己的商品</td>
+    				<td>
+    					关键词：<input type="text" value="" name="name" id="keyWord">
+    				</td>
+					<td>
+    					<input type="radio" style="width: 20px;" value="coefp" name="tab" id="tab">人气
+    					<input type="radio" style="width: 20px;" checked="checked" value="all" name="tab" id="tab">所有
+    				</td>
+					-->
+					<td style="width:300px;">
+    					关键词：<input type="text" value="$!query" name="query">
+    				</td>
+					
+    				<td style="width:100px;">
+    					查<input type="text" value="$!page" name="page" style="width: 25px;">页
+    				</td>
+    				<td style="width:100px;">
+    					<!-- <span style="border:solid 2px grey; height:40px; cursor:pointer;  width:20px;" id="btnSearch">查  询</span>  -->
+    					<input type="submit" value="查询"/>
+    				</td>
+    			</tr>
+	   		</tbody>
+		</table>	
+</div>
+</form>  
+
+<div style="text-align:center;">
+<table class="pp-list" style="margin:auto;">
+	<caption>商品排名列表<span id="info"></span></caption>
+	
+	<thead>
+		<tr>
+			<th>页面</th>
+			<th>排名</th>
+			<th style="width:200px">商品名称</th> <!--style="width:50px" -->
+			<th>店铺名称</th>
+			<th>上架时间</th> <!--style="width:85px" -->
+			<th>下架时间</th> <!--style="width:85px" -->
+			<th>分钟</th>  <!--style="width:40px" -->
+			<!--
+			<th>浏览量</th>	
+			<th>收藏量</th>	
+			<th>成交</th>	
+			<th>信用</th>	
+			<th>好评率</th>	
+			<th>动态评分</th>
+			<th>是否橱窗</th>
+			<th>特色服务</th>
+			-->
+			<th>链接地址</th>
+		</tr>
+		
+	</thead>
+	<tbody>
+		#foreach($itemBean in $itemBeanList)
+    		<tr style="background-color:#ffffff;border:1px;">
+				<td>$page</td>
+    			<td>$velocityCount</td>
+    			<td>$itemBean.title</td>
+    			<td>$itemBean.shopNick</td>
+    			<td>&nbsp; $dateUtil.format($itemBean.listTime) &nbsp;</td>
+    			<td>&nbsp; $dateUtil.format($itemBean.deListTime) &nbsp;</td>
+    			<td>&nbsp; $dateUtil.getMin($itemBean.deListTime) &nbsp;</td>
+    			<!--
+				<td>浏览量</td>	
+    			<td>收藏量</td>	
+    			<td>成交</td>	
+    			<td>信用</td>	
+    			<td>好评率</td>	
+    			<td>动态评分</td>
+    			<td>$itemBean.hasShowcase</td>
+    			<td>特色服务</td>
+				-->
+    			<td><a href="$itemBean.url" target="_blank">查看详情</td>
+    		</tr>	
+		#end
+	</tbody>
+</table>
+</div>
+<div style="margin-bottom:100px;">
+
+</div>	
+	
+
+
+	
+	
+	

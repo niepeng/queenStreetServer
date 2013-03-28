@@ -1,0 +1,5 @@
+#if($userDO)
+	{"code":0, "data":{"id":$userDO.id}}
+#else
+	{"code":-1, "msg": "$!errorMessage"}
+#end	

@@ -1,0 +1,22 @@
+
+
+	#set($form = $formFactory.getForm('user.login'))
+	
+	<form action="/admin/doLogin.htm" method="post">
+		<div>
+			$form.nick.label <input type="text" name="$form.nick.name" value="$!form.nick.value" />
+			$!form.nick.message
+		</div>
+		<div>
+			$form.password.label <input type="password" name="$form.password.name" value="$!form.password.value" />
+			$!form.password.message
+		</div>
+		
+		<div>
+			#errorMessage($!resultmessage.message)
+		</div>	
+		
+		<div>
+			<input type="submit" value="submit" />
+		</div>
+	</form>

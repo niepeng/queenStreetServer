@@ -1,0 +1,90 @@
+
+<br/><br/><br/>
+
+<div style="padding-left:300px;">
+	<i style="padding-right:50px;">会议列表</i>
+	#if($query.status == 0) 
+		<i style="background:#ffcc00;">未审核</i>
+	#else
+		 <a href="$adminModule.setTarget('meetingList').param('status', 0)">未审核</a>
+	#end	
+	
+	#if($query.status == 1) 
+		<i style="pading-right:50px;background:#ffcc00;">编辑中</i>
+	#else
+		 <a href="$adminModule.setTarget('meetingList').param('status', 1)">编辑中</a>
+	#end	
+	
+	#if($query.status == 5) 
+		<i style="pading-right:50px;background:#ffcc00;">已上线</i>
+	#else
+		 <a href="$adminModule.setTarget('meetingList').param('status', 5)">已上线</a>
+	#end
+	
+	<a href="$adminModule.setTarget('teacher/teacherList')" style="padding-left:30px;">嘉宾管理</a>
+	
+	<br/>
+	<br/>
+	
+	<form method="get" action="">
+	#set($startTime1 = $!query.startTime1)
+	#if($startTime1)
+		#set($startTime1 = $dateUtil.format($!query.startTime1, 'yyyy-MM-dd'))
+	#end	
+	#set($startTime2 = $!query.startTime2)
+	#if($startTime2)
+		#set($startTime2 = $dateUtil.format($!query.startTime2, 'yyyy-MM-dd'))
+	#end
+    城市筛选：<select name="cityId">
+		       <option value="0">全部</option>
+			    #foreach($member in $citys.entrySet()) 
+					 <option value="$member.key">$member.value</option>
+				#end	
+		   </select> 
+		
+		会议开始时间范围(2012-09-01)： <input type="text" name="startTime1" value="$!startTime1"> ~ <input type="text" name="startTime2" value="$!startTime2"> 
+				   <input type="hidden" name="status" value="$!query.status" />
+				   <input type="submit"  value="确定">
+	</form>	
+</div>	
+
+<br/>
+
+
+	<ul style="width:70%;padding-left: 100px;">
+		#foreach($meeting in $list)
+			<li #if($velocityCount %2 != 0 ) style="background-color:#f1f1f1;" #else style="background-color:#ffffff;" #end>
+                <div style="padding:6px 0 6px 6px;">
+                <div style="float:right;">
+                    <br><span><a href="$adminModule.setTarget('meetingPreEdit').param('id', $meeting.id)" style="padding-right:20px;">编辑</a></span><br><br>
+						<span><a href="$adminModule.setTarget('meetingSuccess').param('id', $meeting.id)" onclick="return confirm('确定发布？')" style="padding-right:20px;">发布</a></span>
+                    <span><a href="$adminModule.setTarget('meetingDelete').param('id', $meeting.id)" onclick="return confirm('确定删除？')">删除</a></span><br>
+                </div>
+                <table>
+                <tbody><tr><td><img src="$meeting.recordImage" width="230" height="80" /></td>
+                <td style="padding-left:20px;color:#000080">
+				#set($hrefUrl = $!meeting.websiteUrl)
+				#if($hrefUrl)
+					#set($hrefUrl = $!meeting.recordUrl)
+				#end	
+                <a href="$hrefUrl" target="_blank">$meeting.title</a>
+                <div style="margin-top:10px;font-size:.8em;color:#333;">
+                <span style="font-weight:bold">时间：</span>$dateUtil.format($meeting.startTime) - $dateUtil.format($meeting.endTime)<br>
+                <span style="font-weight:bold">地点：</span>$meeting.location</div></td></tr></tbody></table></div>
+        	</li>
+		#end
+    </ul>
+	
+		<div>
+			#errorMessage($!resultmessage.message)
+		</div>	
+		
+		
+	<br />
+	<div class="celar-fixed"></div>
+	<div style="float:right;padding-right:20%;">	
+		#if($query)
+			$widget.setTemplate("pagination").addToContext('query', $query).addToContext('pageFacerName', 'meetingListPageFacer')
+		#end	
+	</div>
+	<div style="padding-top:200px;"></div>

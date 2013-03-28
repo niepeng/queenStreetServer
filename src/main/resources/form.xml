@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<forms>
+    
+    <form name="user">
+		<field name="nick" label="昵称">
+			<validator type="required" message="${field.label}不能为空。"></validator>
+		</field>
+		<field name="password" label="密码">
+			<validator type="required" message="${field.label}不能为空。"></validator>
+		</field>
+	</form>
+	
+	<form name="user.login" extends="user">
+	</form>
+	
+	<form name="item.add">
+	    <field name="name" label="名称">
+			<validator type="required" message="${field.label}不能为空!" />
+			<validator type="string" message="${field.label}的长度必须在1~40个字符之间!">
+				<param name="min" value="1" />
+				<param name="max" value="40" />
+			</validator>
+		</field>
+		<field name="cityId" label="城市编号">
+			<validator type="int" message="${field.label}必须为整数！" />
+		</field>
+		<field name="cooperation" label="合作伙伴">
+		</field>
+		<field name="catId" label="类目编号">
+			<validator type="int" message="${field.label}必须为整数！" />
+		</field>
+		<field name="reason" label="推荐理由">
+			<validator type="string" message="${field.label}的长度必须在1~200个字符之间!">
+				<param name="min" value="0" />
+				<param name="max" value="200" />
+			</validator>
+		</field>
+		<field name="interest" label="感兴趣的人数">
+			<validator type="int" message="${field.label}必须为整数！" />
+		</field>
+		<field name="joinIn" label="参与人数">
+			<validator type="int" message="${field.label}必须为整数！" />
+		</field>
+		<field name="oldPrice" label="原价">
+			<validator type="int" message="${field.label}必须为整数！" />
+		</field>
+		<field name="newPrice" label="现价">
+			<validator type="int" message="${field.label}必须为整数！" />
+		</field>
+		<field name="address" label="地址">
+			<validator type="string" message="${field.label}的长度必须在1~200个字符之间!">
+				<param name="min" value="1" />
+				<param name="max" value="200" />
+			</validator>
+		</field>
+	    <field name="startTime" label="活动开始时间">
+		    <validator type="required" message="${field.label}不能为空！" />
+			<validator type="date" message="${field.label}格式不对！" />
+		</field>
+		
+		<field name="endTime" label="活动结束时间">
+		    <validator type="required" message="${field.label}不能为空！" />
+			<validator type="date" message="${field.label}格式不对！" />
+		</field>
+		
+		<field name="content" label="内容">
+			<validator type="string" message="${field.label}的长度必须在1~4000个字符之间!">
+				<param name="min" value="1" />
+				<param name="max" value="4000" />
+			</validator>
+		</field>
+		
+		<field name="onLineTime" label="上线时间">
+		    <validator type="required" message="${field.label}不能为空！" />
+			<validator type="date" message="${field.label}格式不对！" />
+		</field>
+		<field name="control" label="订单处理">
+		   <validator type="int" message="${field.label}必须为整数！" />
+		</field>
+	</form>
+	
+	<form name="item.edit" extends="item.add">
+	     <field name="id" label="id">
+			<validator type="long" message="${field.label}必须为整数！" />
+		</field>
+		
+		<field name="status" label="状态">
+			<validator type="int" message="${field.label}必须为整数！" />
+		</field>
+		<!-- 
+		是否需要处理；longitude, latitude, image, photos
+		不需要处理的字段：cooperation, referUrl, referId
+		 -->
+	</form>
+	
+	
+	
+	<form name="cat.add">
+		<field name="name" label="名称">
+			<validator type="required" message="${field.label}不能为空。"></validator>
+			<validator type="string" message="${field.label}长度不能多于25个字符!">
+				<param name="max" value="25" />
+			</validator>
+		</field>
+		<field name="sortValue" label="排序值">
+		    <validator type="int" message="${field.label}必须为整数！" />
+		</field>
+	</form>
+	
+	<form name="cat.edit" extends="cat.add">
+		<field name="id">
+			<validator type="long" message="id必须为整数！" />
+		</field>
+	</form>
+	
+	
+	
+	
+	<form name="meeting.edit">
+	    <field name="id">
+			<validator type="int" message="id必须为整数！" />
+		</field>
+		
+		<field name="title" label="标题">
+			<validator type="required" message="标题不能为空!" />
+			<validator type="string" message="标题的长度必须在1~40个字符之间!">
+				<param name="min" value="1" />
+				<param name="max" value="40" />
+			</validator>
+		</field>
+		
+		<!-- <field name="status">
+			<validator type="int" message="id必须为整数！" />
+		</field> -->
+	    
+		<!-- <field name="recordTime" label="收录时间">
+		    <validator type="required" message="收录时间不能为空！" />
+			<validator type="date" message="收录时间格式不对！" />
+		</field> -->
+		
+		<!-- <field name="recordUrl" label="收录地址">
+			<validator type="required" message="收录地址不能为空！" />
+			 <validator type="string" message="收录地址的长度不能多于200个字符!">
+				<param name="max" value="200" />
+			</validator>
+		</field> -->
+		
+				
+		<!-- 
+		// 收录图片
+		private String recordImage;
+		// 图片地址
+		private String imageUrl;
+		 -->
+
+		<field name="intro" label="会议简介">
+			<validator type="required" message="会议简介不能为空！" />
+			 <validator type="string" message="会议简介的长度不能多于1024个字符!">
+				<param name="max" value="1024" />
+			</validator>
+		</field>
+		
+		<field name="websiteUrl" label="会议网址">
+			<validator type="required" message="会议网址不能为空！" />
+			 <validator type="string" message="会议网址的长度不能多于1024个字符!">
+				<param name="max" value="1024" />
+			</validator>
+		</field>
+	
+		<field name="startTime" label="会议开始时间">
+		    <validator type="required" message="会议开始时间不能为空！" />
+			<validator type="date" message="会议开始时间格式不对！" />
+		</field>
+		
+		<field name="endTime" label="会议结束时间">
+		    <validator type="required" message="会议结束时间不能为空！" />
+			<validator type="date" message="会议结束时间格式不对！" />
+		</field>
+		
+		<field name="city" label="城市">
+		    <validator type="required" message="城市不能为空！" />
+		     <validator type="string" message="城市的长度不能多于20个字符!">
+				<param name="max" value="20" />
+			</validator>
+		</field>
+
+		<field name="money" label="费用">
+		    <validator type="required" message="费用不能为空！" />
+		     <validator type="string" message="费用的长度不能多于20个字符!">
+				<param name="max" value="20" />
+			</validator>
+		</field>
+	
+		<field name="location" label="会议地址">
+		    <validator type="required" message="会议地址不能为空！" />
+		     <validator type="string" message="会议地址的长度不能多于50个字符!">
+				<param name="max" value="50" />
+			</validator>
+		</field>	    
+	
+	</form>
+	
+	<form name="board">
+		<field name="meetingId">
+			<validator type="int" message="会议id必须为整数！" />
+		</field>
+		<field name="name" label="名称">
+			<validator type="required" message="${field.label}不能为空。"></validator>
+			<validator type="string" message="${field.label}长度不能多于25个字符!">
+				<param name="max" value="25" />
+			</validator>
+		</field>
+	</form>
+	
+	
+	<form name="board.edit" extends="board">
+	    <field name="id">
+			<validator type="int" message="id必须为整数！" />
+		</field>
+		<field name="meetingId">
+			<validator type="int" message="会议id必须为整数！" />
+		</field>
+		<field name="name" label="名称">
+			<validator type="required" message="${field.label}不能为空。"></validator>
+			<validator type="string" message="${field.label}长度不能多于25个字符!">
+				<param name="max" value="25" />
+			</validator>
+		</field>
+		
+	</form>
+	
+	
+	<form name="meetingTeacher.add">
+		<field name="meetingId">
+			<validator type="int" message="会议id必须为整数！" />
+		</field>
+		<field name="name" label="名称">
+			<validator type="required" message="${field.label}不能为空。"></validator>
+			<validator type="string" message="${field.label}长度不能多于25个字符!">
+				<param name="max" value="25" />
+			</validator>
+		</field>
+	</form>
+	
+	
+	<form name="teacher.add">
+		<field name="name" label="姓名">
+			<validator type="required" message="${field.label}不能为空。"></validator>
+			<validator type="string" message="${field.label}长度不能多于25个字符!">
+				<param name="max" value="25" />
+			</validator>
+		</field>
+		<field name="company" label="公司">
+			<validator type="string" message="${field.label}长度不能多于25个字符!">
+				<param name="max" value="25" />
+			</validator>
+		</field>
+		<field name="postion" label="职位">
+			<validator type="string" message="${field.label}长度不能多于25个字符!">
+				<param name="max" value="25" />
+			</validator>
+		</field>
+		<field name="mobilePhone" label="手机号码">
+			<validator type="string" message="${field.label}长度不能多于14个字符!">
+				<param name="max" value="14" />
+			</validator>
+		</field>
+		<field name="telPhone" label="联系电话">
+			<validator type="string" message="${field.label}长度不能多于20个字符!">
+				<param name="max" value="20" />
+			</validator>
+		</field>
+		<field name="email" label="邮箱地址">
+			<validator type="string" message="${field.label}长度不能多于30个字符!">
+				<param name="max" value="30" />
+			</validator>
+		</field>
+		<field name="weibo" label="微博">
+			<validator type="string" message="${field.label}长度不能多于30个字符!">
+				<param name="max" value="30" />
+			</validator>
+		</field>
+		<field name="info" label="简介">
+			<validator type="string" message="${field.label}长度不能多于500个字符!">
+				<param name="max" value="500" />
+			</validator>
+		</field>
+	</form>
+	
+	<form name="teacher.edit" extends="teacher.add">
+	    <field name="id" label="id">
+			<validator type="required" message="${field.label}不能为空。"></validator>
+		</field>
+	 </form>  
+	 
+	<form name="schedule.add">
+	    <field name="boardId" label="板块id">
+			<validator type="required" message="${field.label}不能为空。"></validator>
+		</field>
+		<field name="meetingId" label="会议id">
+			<validator type="required" message="${field.label}不能为空。"></validator>
+		</field>
+		
+	    <field name="startTime" label="开始时间">
+			<validator type="date" message="${field.label}格式不对！" />
+		</field>
+		
+	    <field name="endTime" label="结束时间">
+			<validator type="date" message="${field.label}格式不对！" />
+		</field>
+		
+	    <field name="name" label="日程名">
+	        <validator type="required" message="${field.label}不能为空。"></validator>
+			<validator type="string" message="${field.label}长度不能多于50个字符!">
+				<param name="max" value="50" />
+			</validator>
+		</field>
+		
+	    <field name="location" label="地址">
+	        <validator type="required" message="${field.label}不能为空。"></validator>
+			<validator type="string" message="${field.label}长度不能多于50个字符!">
+				<param name="max" value="50" />
+			</validator>
+		</field>
+
+ 	 </form>
+	   
+	<form name="schedule.edit" extends="schedule.add">
+	     <field name="id" label="id">
+			<validator type="required" message="${field.label}不能为空。"></validator>
+		</field>
+	</form>   
+	 
+	
+<!--  
+	<form name="token.support">
+		<field name="csrfToken" >
+			<validator type="csrf" message="请不要重复提交"></validator>
+		</field>
+	</form>
+
+	<resource file="forms/one.xml" />
+	<resource file="forms/two.xml" />
+	
+	
+    <include file="forms/user.xml" />
+    <include file="forms/user2.xml" />
+    
+    <resource file="forms/user.xml" />
+    <resource file="forms/user2.xml" />
+	
+	
+-->
+
+</forms>

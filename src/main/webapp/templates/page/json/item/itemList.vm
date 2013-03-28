@@ -1,0 +1,3 @@
+{"code":0, 
+"pageSize": $query.pageSize, 
+"data":$jsonUtil.mfields('id,showTitle,price,picUrl,taoItemId,mobileUrl',$list)}

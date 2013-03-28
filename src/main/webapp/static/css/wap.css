@@ -1,0 +1,96 @@
+*{}
+
+h1,h2,h3,h4,h5,h6,{
+	margin:0px; padding:0px;}
+ul,ol,li,dl,dt,dd{
+	margin:0; padding:0; list-style-type:none;
+	list-style:none;}
+img{
+	margin:0px;
+	padding:0px;
+	border:none;
+	text-align: right;
+}
+
+a{
+	text-decoration:none;cursor:pointer; color:#666666;}
+
+
+.wrap{
+	width:1200px; height:732px; margin:0 auto;}
+.wrap_1{
+	float:left; width:1002px; margin:40px 0 0 100px; height:550px; display:inline;}
+.iphone{
+	width:331px; height:546px;  float:left; margin-top:3px;display:inline; }
+
+.iphoneInfo{
+	width:230px; height:340px; float:left; margin:94px 0 0 22px;display:inline;}
+
+.iphoneRight{
+	width:546px; height:570px; float:left; margin:0 0 0 30px;display:inline;}
+.ipWrap{
+	float:left; width:570px; height:460px;}	
+
+.imgWanle{
+	float:left; display:inline;}	
+.ipImg{
+	float:left; margin-top:70px; display:inline;}
+.tiShi{
+	float:left; height:24px; width:500px;}	
+.tiShi ul li img{
+	float:left;}
+.tiShi ul li{
+	float:left; height:24px; width:500px; color:#8f6a49;}	
+
+.soon{
+	float:left; display:block; width:174px; height:62px; }
+.soon hover{
+	float:left; display:block; width:174px; height:62px;}
+.soon_android{
+	float:left; display:block; width:174px; height:62px; }
+.soon_android hover{
+	float:left; display:block; width:174px; height:62px;}
+.email{
+	width:500px; height:36px; float:left; margin-top:10px; display:inline;}	
+.emailText{
+	width:258px; height:36px; border:none;  float:left; line-height:2.4; text-indent:1em}
+.emailText_back{
+	width:258px; height:36px; border:none;  float:left; line-height:2.4; text-indent:1em;color:#E0E0E0}
+.email a{
+	width:81px; height:36px; float:left; margin-left:5px; display:inline;}
+
+.weiB{
+	float:right; width:90%; height:100px;}	
+.weibo{
+	width:321px; height:67px; float:right; margin-top:25px; }	
+.weibo ul{
+	width:240px; height:24px; float:left; margin-top:43px; margin-left:50px; display:inline;}
+.weibo ul li{
+	float:left; width:93px; height:24px; margin-left:8px; display:inline;}
+	
+
+.copyRight{
+	width:1040px; height:24px; float:left; margin:80px 0 0 80px; display:inline; color:#6f6f6f}
+.copyRight dl{
+	float:left; height:24px;}
+.copyRight ul{
+	float:right; height:24px;}
+.copyRight ul li{
+	float:left; height:24px; margin-right:15px; display:inline}
+.copyRight ul li a{
+	color:#6f6f6f;}
+	
+/*关于我们*/
+.about{
+	float:left; width:560px; height:420px; margin:20px 0 0 0; display:inline; overflow:hidden;color:#6f6f6f;}
+.aboutInfo{
+	float:left; width:560px; height:420px;line-height:2;}
+.aboutInfo p{
+	float:left; width:550px; overflow:hidden; line-height:2; font-family:"微软雅黑"; color:#6f6f6f; text-align:justify; word-wrap:break-word;word-break:break-all}
+.about h1{
+	font-size:18px; font-family:"微软雅黑";color:#6f6f6f;}
+	
+.red{color:#751913;}
+.grow{color:#666666;}
+.lh60{line-height:60px;}
+.lh76{line-height:76px;}

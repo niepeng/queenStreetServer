@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE beans PUBLIC
+    "-//SPRING//DTD BEAN//EN"
+     "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+    
+     <bean id="catDAO" class="com.baibutao.hui.biz.dal.ibatis.CatDAOIbatis"></bean>
+     
+     <bean id="itemDAO" class="com.baibutao.hui.biz.dal.ibatis.ItemDAOIbatis"></bean>
+       
+     <bean id="keyValueDAO" class="com.baibutao.hui.biz.dal.ibatis.KeyValueDAOIbatis"></bean>
+        
+       
+     
+    
+   <!--    <bean id="feedbackDAO" class="com.baibutao.hui.biz.dal.ibatis.FeedbackDAOIbatis"></bean>
+  
+    <bean id="userDAO" class="com.baibutao.hui.biz.dal.ibatis.UserDAOIbatis"></bean>
+   
+    <bean id="collectionInfoDAO" class="com.baibutao.hui.biz.dal.ibatis.CollectionInfoDAOIbatis"></bean>
+    
+    <bean id="joinDAO" class="com.baibutao.hui.biz.dal.ibatis.JoinDAOIbatis"></bean> -->
+    
+    
+    <!-- <bean id="meetingDAO" class="com.baibutao.hui.biz.dal.ibatis.MeetingDAOIbatis"></bean>
+    
+    <bean id="boardDAO" class="com.baibutao.hui.biz.dal.ibatis.BoardDAOIbatis"></bean>
+     
+    <bean id="meetingTeacherDAO" class="com.baibutao.hui.biz.dal.ibatis.MeetingTeacherDAOIbatis"></bean>
+    
+    <bean id="scheduleDAO" class="com.baibutao.hui.biz.dal.ibatis.ScheduleDAOIbatis"></bean>
+     
+    <bean id="teacherDAO" class="com.baibutao.hui.biz.dal.ibatis.TeacherDAOIbatis"></bean> -->
+
+</beans>

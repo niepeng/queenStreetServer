@@ -1,0 +1,147 @@
+<div style="padding-left:30px;">会议嘉宾列表   <a style="padding-left:30px;" href="$adminModule.setTarget('meetingTeacher/addMeetingTeacher').param('meetingId', $meetingDO.id)">添加嘉宾</a></div>
+<div>
+	<ul>
+		#foreach($meetingTeacherDO in $meetingTeacherDOList)
+    		<li style="padding-left:60px;">
+    			$meetingTeacherDO.name  
+				<a style="padding-right:10px;"  href="$adminModule.setTarget('meetingTeacher/meetingTeacherDelete').param('id', $meetingTeacherDO.id).param('meetingId', $meetingTeacherDO.meetingId)" onclick="return confirm('确定删除？')">删除</a>
+    		</li>
+		#end	
+    </ul>	
+</div>
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<br/>
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<div style="padding-left:30px;">会议板块列表   <a style="padding-left:30px;" href="$adminModule.setTarget('board/addBoard').param('meetingId', $meetingDO.id)">添加板块</a></div>
+<div>
+	<ul>
+		#foreach($board in $boardList)
+    		<li style="padding-left:60px;">
+    			板块名： $board.name  
+				<a style="padding-left:10px; padding-right:10px;" href="$adminModule.setTarget('board/preEditBoard').param('meetingId', $meetingDO.id).param('id', $board.id)">编辑</a>
+				<a style="padding-right:10px;"  href="$adminModule.setTarget('board/deleteBoard').param('id', $board.id).param('meetingId', $meetingDO.id)" onclick="return confirm('确定删除？')">删除</a>
+				<a style="padding-right:10px;"  href="$adminModule.setTarget('schedule/scheduleList').param('boardId', $board.id)">日程管理</a>
+    		</li>
+		#end	
+    </ul>	
+</div>
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<br/>
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<br/><br/>编辑会议：<br/> 
+
+#set($form = $formFactory.getForm('meeting.edit'))
+
+<div style="margin:auto;">
+	<form method="post" action="/admin/doEditMeeting.htm">
+	
+	#set($id = $!form.id.value)
+	#if(!$id)
+		#set($id = $meetingDO.id)
+	#end	
+	<input type="hidden" name="$form.id.name" value="$id" /> 
+	
+	<div>
+		#set($title = $!form.title.value)
+		#if(!$title)
+			#set($title = $meetingDO.title)
+		#end	
+		$form.title.label: <input type="text" name="$form.title.name" size="100" value="$!title" />
+		$!form.title.message
+	</div>
+	
+	<div>
+		收录时间：$dateUtil.formatNoException($!meetingDO.recordTime) 
+	</div>
+	
+	<div>
+		收录地址：<a href="$meetingDO.recordUrl" target="_blank">$meetingDO.recordUrl</a>
+	</div>
+	
+	<div>
+		收录图片：<img src="$meetingDO.recordImage" />
+	</div>
+	
+	<div>
+		发布图片：<img src="$meetingDO.imageUrl" />
+	</div>
+	
+	<div>
+		#set($intro = $!form.intro.value)
+		#if(!$intro)
+			#set($intro = $meetingDO.intro)
+		#end	
+        $form.intro.label<TextArea name="$form.intro.name" cols="100" rows="10">
+			$intro
+		</TextArea>
+		$!form.intro.message
+	</div>	
+	
+	<div>
+		#set($websiteUrl = $!form.websiteUrl.value)
+		#if(!$websiteUrl)
+			#set($websiteUrl = $meetingDO.websiteUrl)
+		#end
+		$form.websiteUrl.label : <input type="text" name="$form.websiteUrl.name" size="100" value="$websiteUrl" /> 
+		$!form.websiteUrl.message
+	</div>
+	
+	<div>
+		#set($startTime = $!form.startTime.value)
+		#if(!$startTime)
+			#set($startTime = $dateUtil.formatNoException($meetingDO.startTime))
+		#end
+		$form.startTime.label : <input type="text" name="$form.startTime.name" size="30" value="$startTime" /> 格式：2012-09-12 12:00:00
+		$!form.startTime.message
+	</div>
+	
+	<div>
+		#set($endTime = $!form.endTime.value)
+		#if(!$endTime)
+			#set($endTime = $dateUtil.formatNoException($meetingDO.endTime) )
+		#end
+		$form.endTime.label : <input type="text" name="$form.endTime.name" size="30" value="$endTime" /> 格式：2012-09-12 12:00:00
+		$!form.endTime.message
+	</div>
+	
+	<div>
+		#set($city = $!form.city.value)
+		#if(!$city)
+			#set($city = $meetingDO.city)
+		#end
+		$form.city.label : <input type="text" name="$form.city.name" size="10" value="$city" />
+		$!form.city.message
+	</div>
+	
+	<div>
+		#set($money = $!form.money.value)
+		#if(!$money)
+			#set($money = $meetingDO.money)
+		#end
+		$form.money.label : <input type="text" name="$form.money.name" size="15" value="$money" />
+		$!form.money.message
+	</div>
+	
+	<div>
+		#set($location = $!form.location.value)
+		#if(!$location)
+			#set($location = $meetingDO.location)
+		#end
+		$form.location.label : <input type="text" name="$form.location.name" size="50" value="$location" />
+		$!form.location.message
+	</div>
+	
+	<div>
+		#errorMessage($!resultmessage.message)
+	</div>	
+		
+	
+	
+	<input type="submit" value="修改" />
+	<a href="$adminModule.setTarget('meetingList')">返回</a>
+</form>
+
+</div>

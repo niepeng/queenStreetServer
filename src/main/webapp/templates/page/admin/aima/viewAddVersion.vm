@@ -1,0 +1,31 @@
+
+
+<div style="margin-top:50px; margin-left:100px;">
+		<form action="addVersion.htm" method="post">
+        	<div>
+        		android版本int值：<input type="text" value="$!lastversion" name="lastversion" maxlength="10" />
+        	</div>
+        	<br/>
+			
+        	<div>
+				#if($!downurl)
+					当前android下载地址：$!downurl 
+				#end
+        	</div>
+			<br/>
+			
+			<div>
+				 下载url：<input type="text" value="$!downurl" name="downurl" size="50" />
+            </div>
+			
+			<div>
+			#errorMessage($!resultmessage.message)
+    		</div>	
+    		
+    		<div>
+    			<input type="submit" value="submit" />
+    		</div>
+    		
+        </form>
+</div>		
+	

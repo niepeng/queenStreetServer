@@ -1,0 +1,5 @@
+#if($collectionInfoDO)
+	{"code":0, "data":{"id":$collectionInfoDO.id}}
+#else
+	{"code":0, "data":{"msg":"maybe cancel collection item"} }
+#end	

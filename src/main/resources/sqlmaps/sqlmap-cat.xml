@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="CatDAO">
+
+	<typeAlias type="com.baibutao.hui.biz.dal.dataobject.CatDO" alias="cat" />
+
+	<resultMap id="catMapping" class="cat">
+				<result property="id" column="id"/>
+				<result property="gmtModified" column="gmt_modified"/>
+				<result property="gmtCreate" column="gmt_create"/>
+				<result property="name" column="name"/>
+				<result property="sortValue" column="sort_value"/>
+				<result property="pic" column="pic"/>
+				<result property="info" column="info"/>
+			</resultMap>
+	
+	<sql id="cat-full-columns">
+		t.id, t.gmt_modified, t.gmt_create, t.name, t.sort_value, t.pic, t.info
+	</sql>
+	
+	<insert id="create" parameterClass="cat">
+		<![CDATA[
+			insert into qs_cat(gmt_modified, gmt_create, name, sort_value, pic, info) 
+values (now(), now(), #name#, #sortValue#, #pic#, #info#)
+		]]>
+		<selectKey resultClass="long" keyProperty="id">
+			SELECT	LAST_INSERT_ID();
+	   	</selectKey>
+	</insert>
+	
+	<select id="queryById" resultMap="catMapping" parameterClass="long">
+		select
+			<include refid="cat-full-columns" />
+		from
+			qs_cat t
+		where
+			t.id = #value#  and t.deleted = 0 
+	</select>
+	
+	<select id="queryAll" resultMap="catMapping">
+		select
+			<include refid="cat-full-columns" />
+		from
+			qs_cat t
+		where
+		   t.deleted = 0 
+		 order by 
+		 		sort_value desc 
+		limit 30   
+	</select>
+	
+	<update id="delete" parameterClass="long">
+			update qs_cat t set t.deleted = 1  , t.gmt_modified = now()  where t.id = #value#
+		</update>
+	
+	<update id="update" parameterClass="cat">
+		<![CDATA[
+			update 
+				qs_cat 
+			set 
+				gmt_modified= now(),
+				name= #name#,
+				sort_value= #sortValue#,
+				pic= #pic#,
+				info= #info#
+			where
+				id=#id#
+		]]>
+	</update>
+	
+</sqlMap>

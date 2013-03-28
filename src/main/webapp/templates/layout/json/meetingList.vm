@@ -1,0 +1,1 @@
+{"code":0, "data":$jsonUtil.mfields('id,userId,opt,score,gmtCreate,gmtModified', $scoreList)}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<url-config>
+
+	<url name="baseModule" >
+		<server-url>${hui.base.url}</server-url>
+	</url>
+
+	<url name="adminModule" extends="baseModule">
+		<path>admin</path>
+	</url>
+
+	<url name="staticServer">
+		<server-url>${hui.staticimg.url}</server-url>
+	</url>
+	
+	<url name="jsServer" extends="staticServer">
+		<path>js</path>
+	</url>
+	
+	<url name="cssServer" extends="staticServer">
+		<path>css</path>
+	</url>
+	
+	<url name="imageServer">
+		<server-url>${hui.image.url}</server-url>
+	</url>
+	
+	
+</url-config>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE beans PUBLIC
+    "-//SPRING//DTD BEAN//EN"
+     "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    
+    <!--   一段时间扫描DB，处理活动情况  -->
+    <bean id="scanOptItem" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	<!--  在biz-bo.xml中配置了 dataTask    -->
+		<property name="targetObject" ref="dataTask"></property>
+		<property name="targetMethod" value="scanOptItemMethod"></property>
+		<property name="concurrent" value="false"></property>
+	</bean>
+	
+	<bean id="scanOptItemTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="scanOptItem"></property>
+		<!-- 每1分钟执行一次  <property name="cronExpression" value="0 0/1 * * * ?"></property>  	-->
+		<!-- 每天凌晨2点触发   <property name="cronExpression" value="0 0 2 * * ?"></property>   -->
+		<property name="cronExpression" value="0 0/10 * * * ?"></property>
+	</bean>
+	
+    <!--    凌晨2点出发跑任务  -->
+    
+
+	<bean id="autoJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	<!--  在biz-bo.xml中配置了 dataTask    -->
+		<property name="targetObject" ref="dataTask"></property>
+		<property name="targetMethod" value="autoJobMethod"></property>
+		<property name="concurrent" value="false"></property>
+	</bean>
+	
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="autoJob"></property>
+		<!-- 每1分钟执行一次  <property name="cronExpression" value="0 0/1 * * * ?"></property>  	-->
+		<!-- 每天凌晨2点触发   <property name="cronExpression" value="0 0 2 * * ?"></property>   -->
+		<property name="cronExpression" value="0 0 2 * * ?"></property>
+	</bean>
+	
+	
+	<bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" >
+		<property name="triggers">
+			<list>
+				<ref bean="cronTrigger"/>
+				<ref bean="scanOptItemTrigger"/>
+			</list>
+		</property>
+	</bean>
+	
+</beans>

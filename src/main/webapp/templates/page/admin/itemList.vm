@@ -1,0 +1,89 @@
+ <br/><br/><br/>
+
+<div style="padding-left:100px;">
+	<i style="padding-right:50px;">活动列表</i>
+	#foreach($itemStatus in $applicationUtil.getItemStatus())
+		#if($query.status == $itemStatus.getValue())
+			<i style="background:#ffcc00;">$itemStatus.getMeaning()</i>
+		#else
+			<a href="$adminModule.setTarget('itemList').param('status', $itemStatus.getValue())">$itemStatus.getMeaning()</a>
+		#end	
+	#end	
+	
+    <a style="padding-left:50px;" href="$adminModule.setTarget('itemAdd')">添加活动</a>
+	
+	<!--  <a href="$adminModule.setTarget('teacher/teacherList')" style="padding-left:30px;">嘉宾管理</a>  -->
+	
+	<br/><br/>
+	
+	<form method="get" action="">
+	#set($startTime1 = $!query.startTime1)
+	#if($startTime1)
+		#set($startTime1 = $dateUtil.format($!query.startTime1, 'yyyy-MM-dd'))
+	#end	
+	#set($startTime2 = $!query.startTime2)
+	#if($startTime2)
+		#set($startTime2 = $dateUtil.format($!query.startTime2, 'yyyy-MM-dd'))
+	#end
+    城市筛选：<select name="cityId">
+		       <option value="0">全部</option>
+			    #foreach($cityEnum in $applicationUtil.getCitys()) 
+					 <option value="$cityEnum.getValue()">$cityEnum.getName()</option>
+				#end	
+		   </select> 
+	 类目筛选：<select name="catId">
+		       <option value="0">全部</option>
+			    #foreach($cat in $catList) 
+					 <option value="$cat.id">$cat.name</option>
+				#end	
+		   </select> 
+		活动开始时间(2012-09-01)： <input type="text" name="startTime1" value="$!startTime1"> ~ <input type="text" name="startTime2" value="$!startTime2"> 
+				   <input type="hidden" name="status" value="$!query.status" />
+				   <input type="submit"  value="确定">
+	</form>	
+</div>	
+
+<br/>
+
+	<ul style="width:80%;padding-left: 100px;">
+		#foreach($item in $list)
+			<li #if($velocityCount %2 != 0 ) style="background-color:#f1f1f1;" #else style="background-color:#ffffff;" #end>
+                <div style="padding:6px 0 6px 6px;">
+                <div style="float:right;">
+                    <br><span><a href="$adminModule.setTarget('itemPreEdit').param('id', $item.id).param('referStatus',$!{query.status})" style="padding-right:20px;">编辑</a></span>
+						#if($item.type == 1)
+							<span><a href="$adminModule.setTarget('itemSift').param('id', $item.id).param('type',0)" style="padding-right:20px;" onclick="return confirm('确定取消精选？')">取消精选</a></span>
+						#else	
+							<span><a href="$adminModule.setTarget('itemSift').param('id', $item.id).param('type',1)" style="padding-right:20px;" onclick="return confirm('设置成精选？')">设置成精选</a></span>
+						#end	
+						<br><br>
+                    <span><a href="$adminModule.setTarget('itemDelete').param('id', $item.id)" onclick="return confirm('确定不通过？')">不通过</a></span>&nbsp;&nbsp;
+					 <span><a href="$baseModule.setTarget('item/detail').param('id', $item.id)" target="_blank">查看详情</a></span><br>
+						
+                </div>
+                <table>
+                <tbody><tr><td><img src="$item.image" width="100" height="80" /></td>
+                <td style="padding-left:20px;color:#000080">
+				
+                <a href="$item.referUrl" target="_blank">$item.name</a>
+                <div style="margin-top:10px;font-size:.8em;color:#333;">
+                <span style="font-weight:bold">时间：</span>$dateUtil.format($item.startTime) - $dateUtil.format($item.endTime)  <br>
+                <span style="font-weight:bold">地点：</span>$item.address <br/>
+				<span style="font-weight:bold">类目：</span> 
+				#foreach($cat in $catList) 
+					 #if($cat.id == $item.catId) $cat.name  #end
+				#end <br/>
+				<span style="font-weight:bold">订单处理：</span>#if($item.control == 1)  不能处理 #else 能处理  #end <br/>
+				<span style="font-weight:bold">合作伙伴：</span>$item.cooperation <br/>
+				</div></td></tr></tbody></table></div>
+        	</li>
+		#end
+    </ul>
+<br />
+	<div class="celar-fixed"></div>
+	<div style="float:right;padding-right:20%;">	
+		#if($query)
+			$widget.setTemplate("pagination").addToContext('query', $query).addToContext('pageFacerName', 'itemListPageFacer')
+		#end	
+	</div>
+	<div style="padding-top:200px;"></div>

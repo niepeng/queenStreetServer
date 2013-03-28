@@ -1,0 +1,101 @@
+
+#set($form = $formFactory.getForm('teacher.edit'))
+	
+	<div style="padding-left:200px; padding-top:50px;">
+		<div>
+			编辑嘉宾
+		</div>	
+		<br/>
+		<form action="doEditTeacher.htm" method="post">
+			
+		<div>
+			#set($id = $!form.id.value)
+        	#if(!$id)
+        		#set($id = $teacherDO.id)
+        	#end	
+        	<input type="hidden" name="$form.id.name" value="$!id" /> 
+			$!form.id.message
+		</div>	
+		
+		<div>
+			#set($name = $!form.name.value)
+        	#if(!$name)
+        		#set($name = $teacherDO.name)
+        	#end	
+			$form.name.label <input type="text" name="$form.name.name" value="$!name" />
+			$!form.name.message
+		</div>
+		
+		<div>
+			#set($company = $!form.company.value)
+        	#if(!$company)
+        		#set($company = $teacherDO.company)
+        	#end
+			$form.company.label <input type="text" name="$form.company.name" value="$!company" size="50" />
+			$!form.company.message
+		</div>
+		
+		<div>
+			#set($postion = $!form.postion.value)
+        	#if(!$postion)
+        		#set($postion = $teacherDO.postion)
+        	#end
+			$form.postion.label <input type="text" name="$form.postion.name" value="$!postion" />
+			$!form.postion.message
+		</div>
+		
+		<div>
+			#set($mobilePhone = $!form.mobilePhone.value)
+        	#if(!$mobilePhone)
+        		#set($mobilePhone = $teacherDO.mobilePhone)
+        	#end
+			$form.mobilePhone.label <input type="text" name="$form.mobilePhone.name" value="$!mobilePhone" />
+			$!form.mobilePhone.message
+		</div>
+		
+		<div>
+			#set($telPhone = $!form.telPhone.value)
+        	#if(!$telPhone)
+        		#set($telPhone = $teacherDO.telPhone)
+        	#end
+			$form.telPhone.label <input type="text" name="$form.telPhone.name" value="$!telPhone" />
+			$!form.telPhone.message
+		</div>
+		
+		<div>
+			#set($email = $!form.email.value)
+        	#if(!$email)
+        		#set($email = $teacherDO.email)
+        	#end
+			$form.email.label <input type="text" name="$form.email.name" value="$!email" size="50" />
+			$!form.email.message
+		</div>
+		
+		<div>
+			#set($weibo = $!form.weibo.value)
+        	#if(!$weibo)
+        		#set($weibo = $teacherDO.weibo)
+        	#end
+			$form.weibo.label <input type="text" name="$form.weibo.name" value="$!weibo" size="50" />
+			$!form.weibo.message
+		</div>
+		
+		<div>
+			#set($info = $!form.info.value)
+        	#if(!$info)
+        		#set($info = $teacherDO.info)
+        	#end
+            $form.info.label <TextArea type="text" name="$form.info.name"  cols="100" rows="5">$!info</TextArea>
+			$!form.info.message
+		</div>
+		
+		<div>
+			#errorMessage($!resultmessage.message)
+		</div>	
+		
+		<div>
+			<input type="submit" value="修改" />
+		</div>
+	</form>
+    </div>	
+		

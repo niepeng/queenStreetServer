@@ -1,0 +1,31 @@
+	
+<ul>
+    	
+	<li><a href="$adminModule.setTarget('itemList').param('status',1)">活动列表</a></li>  <br/><br/><br/>
+	
+	<li><a href="$adminModule.setTarget('cat/catList')">类目列表</a></li>  <br/><br/><br/>
+	
+	<li><a href="$adminModule.setTarget('order/orderList')">查看订单列表</a></li>  <br/><br/><br/>
+	
+	
+	查看展现中的活动 没有经纬度的url：$adminModule.setTarget('main').param('status','4').param('flag','flag')	<br/>
+	 #foreach($item in $itemList)
+		#if($item.longitude ==	0)
+			$item.address :  $item.longitude ,, $item.latitude  <br/>
+		#end	
+     #end 
+	 
+	  <li>
+		
+		<form method="post" enctype="multipart/form-data" action="/admin/doUploadData.htm">
+			<input type="file" name="fileData" /> <br/><br/>
+			<input type="submit" value="上传数据" />
+        </form>
+		<br/><br/><br/><br/>
+		<div>
+			#errorMessage($!resultmessage.message)
+		</div>	
+		
+	</li>
+	
+</ul>	

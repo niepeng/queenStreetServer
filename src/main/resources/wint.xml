@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<object>
+
+	
+	<object class="wint.mvc.tools.service.DefaultPullToolsService">
+		<object name="tools">
+			<object name="securityUtil" class="wint.lang.utils.SecurityUtil"/>
+			<object name="systemUtil" class="wint.lang.utils.SystemUtil"/>
+			<object name="dateUtil" class="com.baibutao.hui.common.DateUtil"/>
+			<object name="jsonUtil" class="com.baibutao.hui.common.JsonUtil"/>
+			<object name="applicationUtil" class="com.baibutao.hui.common.ApplicationUtil"/>
+		</object>
+	</object>
+	
+</object>

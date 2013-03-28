@@ -1,0 +1,1 @@
+{"code":0, "data":$jsonUtil.mfields('collectionId,collectionDate,item.id,item.name,item.image,item.interest,item.joinIn,item.oldPrice,item.newPrice,item.address,item.startTime,item.endTime',$beanList)}

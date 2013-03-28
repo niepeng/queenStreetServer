@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>
+		快乐周末
+		</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link href="$cssServer/cssreset.css" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="$staticServer/js/jquery.js"></script>
+        <style type="text/css">
+          /*S mobile*/
+        .MobileNav{
+        position: relative;
+        height: 41px;
+        width: 900px;
+        margin: 0 auto;
+        }
+        .MobileNav a {
+        background: url($staticServer/images/sckzsew_929x91.png) no-repeat;
+        height: 41px;
+        width: 132px;
+        text-indent: -9999px;
+        display: block;
+        float: left;
+        }
+        .MobileNav a.app {
+        background-position: 0 top;
+        }
+        .MobileNav a.android {
+        background-position: -133px top;
+        }
+        .Group .MobileNav .c2,.MobileNav a.app:hover {
+        background-position: 0 -50px;
+        }
+        .Group .MobileNav .c3,.MobileNav a.android:hover {
+        background-position: -133px -50px;
+        }
+        .MobileCon-andor{
+        background:url(http://img01.taobaocdn.com/imgextra/i1/54937490/T2tHbeXgRaXXXXXXXX_!!54937490.jpg) no-repeat;
+        width: 940px;
+        height: 443px;
+        margin:0 auto;
+        position: relative;
+        }
+        .MobileCon-app{
+        background: url(http://img04.taobaocdn.com/imgextra/i4/54937490/T2oUveXlXXXXXXXXXX_!!54937490.jpg) no-repeat;
+        width: 940px;
+        height: 443px;
+        margin:0 auto;
+        position: relative;
+        }
+        .MobileSlid {
+        position: relative;
+        width: 188px;
+        height: 281px;
+        margin-left: 118px;
+        top: 76px;
+        overflow: hidden;
+        }
+        .slide_img_android {
+        top: 86px;
+        margin-left: 140px;
+        height: 303px;
+        width: 178px;
+        }
+        .MobileSlid .img_list_show {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 10000px;
+        }
+        .MobileSlid .img_list_show li {
+        float: left;
+        display: inline;
+        width: 178px;
+        }
+        .MobileCon-app  .img_list_show li {
+        float: left;
+        display: inline;
+        width: 188px;
+        }
+        .MobileCon-andor .app_adress,.MobileCon-app .app_adress{
+        position: absolute;
+        height: 65px;
+        width: 209px;
+        left: 392px;
+        top: 357px;
+        }
+        .MobileCon-andor .app_wx, .MobileCon-app .app_wx
+        {
+        position: absolute;
+        height: 80px;
+        width: 80px;
+        left: 705px;
+        top: 357px;
+        	}
+        .MobilePic {
+        margin: 20px 10px 25px;
+        }
+        .pit {text-indent:2em;line-height:2}
+        /*E mobile*/
+        
+        /**S per_vision**/
+        .per_version h3{padding: 13px 0;border-bottom: 1px dotted #BDE6FA;}
+        .box_version {margin-top: 13px;margin-bottom: 44px;}
+        .box_version li {float: left;padding: 15px 23px;width: 198px;height: 170px;border: 1px solid #EEE;overflow: hidden;}
+        .app_title {height: 58px;width: 198px;overflow: hidden;}
+        .app_summary{clear: both;margin-top: 9px;width: 198px;height: 72px;line-height: 24px;font-size: 12px;color: #848484;word-wrap: break-word;overflow: hidden}
+        .app_interact {margin-top: 8px;height: 24px;line-height: 24px;color: #848484;}
+        .app_interact .suggest {float: right;line-height: 24px;height: 24px;width:24px;background:url(http://www.kajiefang.com/images/kjf_icon_i.png) 0 -1692px no-repeat; padding-left:24px}
+        .app_t_date {color:#1C7986}
+        .app_title .app_detail {float: left;height: 58px;width: 58px}
+        .app_title .app_t_word{float: left;font-size: 20px;color: black;line-height: 58px;height: 58px;width: 140px;cursor:default;overflow: hidden;}
+        
+		.wrap_foot {
+                background: url("http://www.kajiefang.com/images/footbg.jpg") repeat-x scroll 0 0 #FFFFFF;
+                height: 90px;
+            }
+			
+			#webfoot {
+                clear: both;
+                color: #585858;
+                letter-spacing: 1px;
+                margin: 40px auto 10px;
+                padding: 20px 0;
+                text-align: center;
+                width: 960px;
+            }
+		
+		
+		</style>
+	</head>
+	<body>
+		$page_content
+		
+		<style>
+		.error-tip {
+			font-size: 20px;
+			color: #f00;
+			font-weight: bold;
+		}
+		</style>
+	</body>
+</html>

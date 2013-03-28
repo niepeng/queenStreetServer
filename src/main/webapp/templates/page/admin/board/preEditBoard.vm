@@ -1,0 +1,35 @@
+
+
+#set($form = $formFactory.getForm('board.edit'))
+
+<div style="margin:auto;">
+	<form method="post" action="doEditBoard.htm">
+    	#set($meetingId = $!form.meetingId.value)
+    	#if(!$meetingId)
+    		#set($meetingId = $meetingDO.id)
+    	#end	
+    	<input type="hidden" name="$form.meetingId.name" value="$meetingId" /> 
+		$!form.meetingId.message
+		
+		#set($id = $!form.id.value)
+    	#if(!$id)
+    		#set($id = $boardDO.id)
+    	#end	
+    	<input type="hidden" name="$form.id.name" value="$id" /> 
+		$!form.id.message
+    	
+    	<div>
+    		#set($name = $!form.name.value)
+			#if(!$name)
+				#set($name = $boardDO.name)
+			#end	
+    		$form.name.label: <input type="text" name="$form.name.name" size="20" value="$!name" />
+    		$!form.name.message
+		</div>
+		
+		<input type="submit" value="修改" />
+		<a href="$adminModule.setTarget('meetingList')">返回</a>
+		
+    </form>
+	
+</div>	

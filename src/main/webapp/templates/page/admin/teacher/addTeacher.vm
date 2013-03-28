@@ -1,0 +1,59 @@
+
+#set($form = $formFactory.getForm('teacher.add'))
+	
+	<div style="padding-left:200px; padding-top:50px;">
+		<div>
+			添加嘉宾
+		</div>	
+		<br/>
+		<form action="doAddTeacher.htm" method="post">
+		<div>
+			$form.name.label <input type="text" name="$form.name.name" value="$!form.name.value" />
+			$!form.name.message
+		</div>
+		
+		<div>
+			$form.company.label <input type="text" name="$form.company.name" value="$!form.company.value" size="50" />
+			$!form.company.message
+		</div>
+		
+		<div>
+			$form.postion.label <input type="text" name="$form.postion.name" value="$!form.postion.value" />
+			$!form.postion.message
+		</div>
+		
+		<div>
+			$form.mobilePhone.label <input type="text" name="$form.mobilePhone.name" value="$!form.mobilePhone.value" />
+			$!form.mobilePhone.message
+		</div>
+		
+		<div>
+			$form.telPhone.label <input type="text" name="$form.telPhone.name" value="$!form.telPhone.value" />
+			$!form.telPhone.message
+		</div>
+		
+		<div>
+			$form.email.label <input type="text" name="$form.email.name" value="$!form.email.value" size="50" />
+			$!form.email.message
+		</div>
+		
+		<div>
+			$form.weibo.label <input type="text" name="$form.weibo.name" value="$!form.weibo.value" size="50" />
+			$!form.weibo.message
+		</div>
+		
+		<div>
+            $form.info.label <TextArea type="text" name="$form.info.name" value="$!form.info.value" cols="100" rows="5"></TextArea>
+			$!form.info.message
+		</div>
+		
+		<div>
+			#errorMessage($!resultmessage.message)
+		</div>	
+		
+		<div>
+			<input type="submit" value="添加" />
+		</div>
+	</form>
+    </div>	
+		

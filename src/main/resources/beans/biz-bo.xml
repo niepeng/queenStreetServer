@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE beans PUBLIC
+    "-//SPRING//DTD BEAN//EN"
+     "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+    
+    <bean id="dataTask" class="com.baibutao.hui.biz.task.impl.DataTaskImpl">
+    </bean> 
+    
+    <!-- <bean id="dataTask" class="com.baibutao.hui.biz.task.impl.DataTaskImpl">
+        <property name="geocoderKey" value="${hui.geocoderkey.url}"></property>
+    </bean>
+    
+    <bean id="taobaoOpenBO" class="com.baibutao.hui.biz.bo.impl.TaobaoOpenBOImpl">
+		<property name="url" value="${theme.tbapi.url}"></property>
+		<property name="appkey" value="${theme.tbapi.appkey}"></property>
+		<property name="secret" value="${theme.tbapi.secret}"></property>
+		<property name="pid" value="${theme.tbapi.pid}"></property>
+		<property name="yunItemService" ref="yunItemService"></property>
+	</bean>
+	
+    <bean id="yunItemService" class="com.baibutao.yun.tao.service.impl.ItemServiceImpl" /> -->
+
+</beans>

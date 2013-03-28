@@ -1,0 +1,78 @@
+<style>
+	body,div,pre,p,code,form,fieldset,legend,input,button,textarea,blockquote{
+	 margin:0px; padding:0px;font-family:"微软雅黑"; color:#666666;}
+</style>	
+
+<table width="95%" border="0" cellspacing="4" cellpadding="1" align="center">
+	<tr>
+    <td colspan="2" align="left"><font size="4"><B>$itemDO.name</B></font></td>
+  </tr>
+  <tr>
+    <!--  <td colspan="2" align="center" valign="top" align="center"><img border="none" src="$itemDO.image"></td>  -->
+    <td colspan="2" align="left" valign="top" align="center"><img width="95%" border="none" src="$itemDO.image"></td>
+  </tr>
+  
+  <tr>
+    <td colspan="2" align="left" >
+    	<table cellspacing="4" cellpadding="1" border="0">
+    		<tbody>
+				<tr>
+    			<td><img height="15" border="none" src="$staticServer/images/icon_date.png"></td>
+    			<td colspan="3">$dateUtil.format($itemDO.startTime, 'MM-dd HH:mm') ~ $dateUtil.format($itemDO.endTime, 'MM-dd HH:mm')</td>
+  			</tr>
+  			<tr>
+    			<td><img height="15" border="none" src="$staticServer/images/icon_spot1.png"></td>
+    			<td colspan="3">$itemDO.address</td>
+  			</tr>
+  			<tr>
+    			<td><img height="15" border="none" src="$staticServer/images/icon_sponsor.png"></td>
+    			<td colspan="3"><i style="color:#FC720C;">$itemDO.interest</i> 感兴趣  <i style="color:#FC720C;">$itemDO.joinIn</i> 报名</td>
+  			</tr>
+  			<tr>
+    			<td><img height="15" border="none" src="$staticServer/images/icon_sponsor.png"></td>
+    			<td colspan="3">合作伙伴：$itemDO.cooperation</td>
+  			</tr>
+  			<tr>
+    			<td><img height="15" border="none" src="$staticServer/images/icon_catalog.png"></td>
+    			<td colspan="3">费用： #if($itemDO.newPrice == 0) 免费  #else <DEL>${itemDO.oldPrice}元</DEL> <i style="color:#036b6a">${itemDO.newPrice}元</i> #end</td>
+  			</tr>
+    	</tbody></table>
+    </td>
+  </tr>
+ 
+  <tr>
+    <td height="40" style="line-height:35px;" colspan="2">
+		 <hr/>
+	</td>
+  </tr>
+  <tr>
+    <td height="40" style="line-height:35px;" colspan="2"><span style="color:#751913;">活动介绍:</span><br>
+		$applicationUtil.contentAddBr($itemDO.content)
+	</td>
+  </tr>
+  
+  <!-- 
+  <tr>
+    <td align="center" colspan="2"><p id="button_display" name="button_display"><a href="http://itunes.apple.com/us/app/wan-le-ke-fa-xian-dang-hao/id498160128?l=zh&amp;ls=1&amp;mt=8" onclick="app_statistical_platform_button_click('installation')"><img width="95%" border="none" src="http://content.wanleke.com/weixin/img/btn_n.jpg"></a></p></td>
+  </tr>
+  -->
+  
+   <tr>
+    <td align="center" colspan="2">
+	#if($iPhone)
+	   <tr>
+        <td align="center" colspan="2"><p id="button_display" name="button_display"><img width="95%" border="none" src="$staticServer/images/iphone_for_update.jpg"></p></td>
+      </tr>
+	#else
+		<tr>
+        <td align="center" colspan="2"><p id="button_display" name="button_display"><a href="http://static.alashu.com/weekendDO2.1.apk"><img width="95%" border="none" src="$staticServer/images/btn_n_new.jpg"></a></p></td>
+      </tr>
+	#end
+	</td>
+  </tr>
+   <tr>
+    <td height="20" style="line-height:35px;" colspan="2">
+	</td>
+  </tr>
+</table>
+

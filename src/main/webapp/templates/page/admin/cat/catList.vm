@@ -1,0 +1,33 @@
+  
+  <br/><br/>
+   <a style="padding-left: 100px;" href="$adminModule.setTarget('cat/addCat')">添加类目</a>
+	<br/><br/><br/>	
+
+	<ul style="width:60%;padding-left: 100px;">
+		#foreach($cat in $list)
+			<li #if($velocityCount %2 != 0 ) style="background-color:#f1f1f1;" #else style="background-color:#ffffff;" #end>
+                <div style="padding:6px 0 6px 6px;">
+                    <div style="float:right;">
+                        <br><span><a href="$adminModule.setTarget('cat/preEditCat').param('id', $cat.id)" style="padding-right:20px;">编辑</a></span>
+    						<span><a href="$adminModule.setTarget('cat/catDelete').param('id', $cat.id)" style="padding-right:20px;" onclick="return confirm('确定要删除？')">删除</a></span>
+    						<br><br>
+                    </div>
+                    <table>
+                        <tbody>
+        				 <tr>
+        					<td><img src="$!{cat.pic}" width="100" height="80" /></td>
+                            <td style="padding-left:20px;color:#000080">
+                                 $cat.name
+                                <div style="margin-top:10px;font-size:.8em;color:#333;">
+									<span style="font-weight:bold">介绍：</span><br>
+									<span style="font-weight:bold">排序值：$cat.sortValue</span><br>
+								</div>
+            			 	</td>
+        				</tr>
+        				</tbody>
+    				</table>
+				</div>
+        	</li>
+		#end
+    </ul>
+		
